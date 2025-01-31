@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+
+  <!--css links-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+<div class="container">
+  <?php 
+
+    <!-- ex-1 -->
+    CREATE DATABASE mysql619;
+
+    <!-- ex-2 -->
+    CREATE TABLE address(
+    id int(100) PRIMARY KEY AUTO_INCREMENT,
+    location varchar(255) NOT NULL
+    );
+
+    <!-- ex-3 -->
+    CREATE TABLE students(
+    id int(100) PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255) NOT NULL,
+    age int(100) NOT NULL,
+    email varchar(255) NOT NULL,
+    a_id int(100) NOT NULL,
+    FOREIGN KEY(a_id) REFERENCES address(id)
+    );
+
+    <!-- ex-4 -->
+    INSERT INTO address(location) VALUES("Badda");
+
+    <!-- ex-5 -->
+    INSERT INTO address(location) VALUES
+    ("Gulshan1"),
+    ("Gulshan2"),
+    ("Banani");
+
+    <!-- ex-6 -->
+    INSERT INTO students(`name`,`age`,`email`,`a_id`) VALUES
+    ("Robin", 11,"r@g.com",1),
+    ("Robi", 12,"ro@g.com",2),
+    ("Anup", 10,"a@g.com",3),
+    ("Mithun", 11,"m@g.com",1),
+    ("Mithu", 11,"mi@g.com",2);
+
+    <!-- ex-7 -->
+    SELECT * FROM `students`;
+
+    <!-- ex-8 -->
+    SELECT name,age,email FROM `students`;
+
+    <!-- ex-9 -->
+    SELECT * FROM `students` WHERE id=1;
+
+    <!-- ex-10 -->
+    SELECT * FROM `students` WHERE name="Mithun";
+
+    <!-- ex-11 -->
+    UPDATE students SET name="Kabir",email="k@g.com" WHERE id=5;
+
+    <!-- ex-12 -->
+    DELETE FROM address WHERE id=6;
+
+    <!-- ex-13 -->
+    SELECT * FROM
+    address,students
+    WHERE address.id=students.a_id ;
+
+    <!-- ex-14 -->
+    SELECT students.name,students.age,students.email,address.location
+    FROM address,students
+    WHERE address.id=students.a_id;
+
+    <!-- ex-15 -->
+    SELECT * FROM `students` WHERE name="Robin" OR age=11;
+
+    <!-- ex-16 -->
+    SELECT * FROM `students` WHERE name="Robin" AND age=11;
+
+    <!-- ex-17 -->
+    SELECT * FROM `students` WHERE name LIKE "%r";
+
+    <!-- ex-18 -->
+    SELECT * FROM `students` WHERE name LIKE "%r%";
+
+    <!-- ex-19 -->
+    SELECT * FROM `students` WHERE name LIKE "r%";
+
+    <!-- ex-20 -->
+    SELECT students.name 
+    FROM students 
+    ORDER BY name ASC
+
+    <!-- ex-21 -->
+    SELECT students.name 
+    FROM students 
+    ORDER BY name DESC;
+
+    <!-- ex-22 -->
+    SELECT students.name,students.age
+    FROM students
+    ORDER BY name DESC;
+
+    <!-- ex-23 -->
+    SELECT DISTINCT age FROM students;
+
+    <!-- ex-24 -->
+    SELECT * FROM students WHERE NOT name="Anup";
+
+    <!-- ex-25 -->
+    SELECT * FROM students 
+    WHERE NOT name="Anup" 
+    AND NOT age=11;
+
+    <!-- ex-26 -->
+    SELECT * FROM students 
+    WHERE email IS NULL;
+
+    <!-- ex-27 -->
+    SELECT * 
+    FROM students 
+    ORDER BY name ASC
+    LIMIT 3;
+
+    <!-- EX-28 -->
+    SELECT * 
+    FROM students 
+    ORDER BY name DESC
+    LIMIT 2;
+
+    <!-- EX-29 -->
+    SELECT * 
+    FROM students 
+    LIMIT 3;
+
+    <!-- EX-30 -->
+    SELECT * 
+    FROM students 
+    ORDER BY id DESC
+    LIMIT 3;
+
+    <!-- EX-31 -->
+    SELECT * 
+    FROM students 
+    ORDER BY id DESC
+    LIMIT 3 OFFSET 2;
+
+    <!-- EX-32 -->
+    SELECT MAX(age) AS Elder
+    FROM `students`;
+
+    <!-- ex-33 -->
+    SELECT MIN(age) AS Younger
+    FROM `students`;
+
+    <!-- ex-34 -->
+    SELECT COUNT(id)
+    FROM `students`;
+
+    <!-- ex-35 -->
+    SELECT AVG(age)
+    FROM `students`;
+
+    <!-- ex-36 -->
+    SELECT SUM(age)
+    FROM `students`;
+
+    <!-- ex-37 -->
+    SELECT * FROM `students` WHERE name LIKE "_o%";
+
+    <!-- ex-38 -->
+    SELECT * FROM `students` WHERE name LIKE "m%n";
+
+    <!-- ex-39 -->
+    SELECT * FROM `students` WHERE name NOT LIKE "r%";
+
+    <!-- ex-40 -->
+    SELECT * FROM `students` WHERE name LIKE "_nup";
+
+    <!-- ex-41 -->
+    SELECT * FROM `students` WHERE name LIKE "m_t_u_";
+
+    <!-- ex-42 -->
+    -- SELECT * FROM `students`;
+    SELECT * FROM `address`;
+
+
+  ?>
+</div>
+
+ <!--script links-->
+ <script src="js/bootstrap.bundle.min.js"></script>
+ <script src="js/script.js"></script>
+</body>
+</html>
